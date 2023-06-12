@@ -1,0 +1,88 @@
+import {
+  Box,
+  Card,
+  CardBody,
+  Grid,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
+import Layout from "../components/layout";
+
+const BlogPost = [
+  {
+    ID: 1,
+    imgSrc:
+      "https://images.unsplash.com/photo-1685942962211-bdae665b7a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    postCategoery: "Photography",
+    postTitle:
+      "Lorem ipsum dolor sit amet consectetur. Ullamcorper porttitor diam netus eget.",
+    postDate: "May 6, 2023",
+  },
+  {
+    ID: 2,
+    imgSrc:
+      "https://images.unsplash.com/photo-1685942962211-bdae665b7a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    postCategoery: "Photography",
+    postTitle:
+      "Lorem ipsum dolor sit amet consectetur. Ullamcorper porttitor diam netus eget.",
+    postDate: "May 6, 2023",
+  },
+];
+
+const Home = () => {
+  return (
+    <>
+      <Layout>
+        <Box mb={50}>
+          <Image
+            borderRadius={8}
+            h={215}
+            w={"full"}
+            objectFit={"cover"}
+            src="https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1923&q=80"
+          />
+          <Heading mt={2.5} fontSize={"21px"} lineHeight={"25px"}>
+            Hi! I’m Ilham — Full time nerd.
+          </Heading>
+          <Text fontSize={"17px"} lineHeight={"25px"}>
+            A front-end enthusiast from Indonesia. Interested in React, Node,
+            visual design, bikes, photography, and music.
+          </Text>
+        </Box>
+        <Text
+          fontSize={11}
+          letterSpacing={2}
+          mb={5}
+          textTransform={"uppercase"}
+        >
+          Blog
+        </Text>
+        <Grid gap={10}>
+          {BlogPost.map((item) => (
+            <Card
+              key={item.ID}
+              overflow={"hidden"}
+              variant={"filled"}
+              bgColor={"white"}
+              borderRadius={12}
+            >
+              <Image maxH={"170px"} src={item.imgSrc} />
+              <CardBody p={6}>
+                <Heading fontSize={12} textTransform={"uppercase"}>
+                  {item.postCategoery}
+                </Heading>
+                <Heading mt={1} fontSize={19}>
+                  {item.postTitle}
+                </Heading>
+                <Text mt={2}>{item.postDate}</Text>
+              </CardBody>
+            </Card>
+          ))}
+        </Grid>
+      </Layout>
+    </>
+  );
+};
+
+export default Home;
