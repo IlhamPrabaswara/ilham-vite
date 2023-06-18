@@ -2,9 +2,9 @@ import { Box, Collapse, Flex, Stack, useDisclosure } from "@chakra-ui/react";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
-const { isOpen, onToggle } = useDisclosure();
 
 const NavBar: FC = () => {
+  const { isOpen, onToggle } = useDisclosure();
   return (
     <Box
       className="navbar"
