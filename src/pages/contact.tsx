@@ -6,7 +6,7 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import Layout from "../components/layout";
+import Layout from "../components/layout/layout";
 
 const Contact = () => {
   const contact = {
