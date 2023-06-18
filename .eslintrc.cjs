@@ -16,5 +16,9 @@ module.exports = {
     'react'
   ],
   rules: {
+    'quotes': ['error', 'single'], 
+    'semi': ['error', 'always'], // Force semicolons
+    'indent': ['error', 2], // 2 space indentation
+    'no-multi-spaces': ['error'] // Avoid extra space
   }
-}
+};
