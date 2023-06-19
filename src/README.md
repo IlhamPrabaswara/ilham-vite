@@ -10,9 +10,9 @@ Choose one of the following options to get started:
 - Clone the repo: `git clone https://github.com/naufaldi/next-landing-vpn.git`
 - Fork the repo -->
 
-## About the Template
+## Tech Stack
 
-- Template building using Remix
+- Vite + React
 - Chakra UI
 
 <!-- ## Feature Template
