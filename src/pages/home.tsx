@@ -9,8 +9,20 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../components/layout/layout";
 import { BlogPost } from "../constant/blogPost";
+import { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
+
 
 const Home = () => {
+  const [dataBlog, setDataBlog] = useState([])
+
+  useEffect(() => {
+    getBlog()
+  }, []);
+  const getBlog = async () => {
+    let { data } = await supabase.from("blog-posts").select()
+    setDataBlog(data)
+    };
   return (
     <>
       <Layout>
@@ -39,7 +51,7 @@ const Home = () => {
           Blog
         </Text>
         <Grid gap={10}>
-          {BlogPost.map((item) => (
+          {dataBlog.map((item) => (
             <Card
               key={item.ID}
               overflow={"hidden"}
@@ -47,10 +59,10 @@ const Home = () => {
               bgColor={"white"}
               borderRadius={12}
             >
-              <Image maxH={"170px"} src={item.imgSrc} />
+              {/* <Image maxH={"170px"} src={item.imgSrc} /> */}
               <CardBody p={6}>
                 <Heading fontSize={12} textTransform={"uppercase"}>
-                  {item.postCategoery}
+                  {item.postCategory}
                 </Heading>
                 <Heading mt={1} fontSize={19}>
                   {item.postTitle}
