@@ -31,5 +31,8 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "semi": ["error", "never"],
+        "quotes": ["error", "single"],
+        "react/react-in-jsx-scope": "off" 
     }
 }
