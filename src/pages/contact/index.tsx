@@ -1,80 +1,54 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import {
   Button,
   FormControl,
+  FormLabel,
   Input,
-  // Modal,
-  // ModalBody,
-  // ModalCloseButton,
-  // ModalContent,
-  // ModalFooter,
-  // ModalHeader,
-  // ModalOverlay,
   Stack,
   Text,
   Textarea,
-  useDisclosure,
 } from '@chakra-ui/react'
 import PageContainer from '../../layouts/pageContainer'
 import { supabase } from '../../utils/supabaseClient'
 import { ContactFormType } from '../../interfaces/contact.interfaces'
+import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 
 const Contact = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const [input, setInput] = useState<ContactFormType>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
+  const { control, handleSubmit, reset, formState } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      message: '',
+    },
   })
-  const handleChange = (e: any) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    })
-  }
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
-    const { data } = await supabase
+
+  const onSubmit: SubmitHandler<ContactFormType> = async (dataMessage) => {
+    const { data }: any = await supabase
       .from('messages')
       .insert({
-        firstName: input.firstName,
-        lastName: input.lastName,
-        email: input.email,
-        message: input.message,
+        firstName: dataMessage.firstName,
+        lastName: dataMessage.lastName,
+        email: dataMessage.email,
+        message: dataMessage.message,
       })
       .select()
-
     if (data) {
-      setInput({
-        ...input,
+      alert(`Hi ${data[0].firstName}! your message is successfully sent!`)
+    }
+  }
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({
         firstName: '',
         lastName: '',
         email: '',
         message: '',
       })
-      alert("Your message is successfully sent!")
-      // return (
-      //   <Modal isOpen={isOpen} onClose={onClose}>
-      //     <ModalOverlay />
-      //     <ModalContent>
-      //       <ModalHeader>Modal Title</ModalHeader>
-      //       <ModalCloseButton />
-      //       <ModalBody>
-      //         <h1>Hello</h1>
-      //       </ModalBody>
-
-      //       <ModalFooter>
-      //         <Button colorScheme="blue" mr={3} onClick={onClose}>
-      //           Close
-      //         </Button>
-      //         <Button variant="ghost">Secondary Action</Button>
-      //       </ModalFooter>
-      //     </ModalContent>
-      //   </Modal>
-      // )
     }
-  }
+  }, [formState])
+
   return (
     <PageContainer>
       <div id="contact">
@@ -83,44 +57,55 @@ const Contact = () => {
             <Text mb={'50px'}>
               Got a project you'd like to discuss? I'm all ears.
             </Text>
-            <form onSubmit={handleSubmit}>
-              <FormControl>
-                <Stack gap={'30px'}>
-                  <Input
-                    name="firstName"
-                    value={input.firstName}
-                    placeholder="First Name"
-                    onChange={handleChange}
-                  />
-                  <Input
-                    name="lastName"
-                    value={input.lastName}
-                    placeholder="Last Name"
-                    onChange={handleChange}
-                  />
-                  <Input
-                    name="email"
-                    value={input.email}
-                    placeholder="Email"
-                    onChange={handleChange}
-                  />
-                  <Textarea
-                    name="message"
-                    value={input.message}
-                    placeholder="Message"
-                    onChange={handleChange}
-                  />
-                  <Button
-                    type="submit"
-                    variant={'outline'}
-                    w={'full'}
-                    onClick={onOpen}
-                    onChange={handleChange}
-                  >
-                    Submit
-                  </Button>
-                </Stack>
-              </FormControl>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Stack gap={'30px'}>
+                <Controller
+                  name="firstName"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <>
+                      <FormControl>
+                        <FormLabel>First Name</FormLabel>
+                        <Input placeholder="First Name" {...field} />
+                      </FormControl>
+                    </>
+                  )}
+                />
+                <Controller
+                  name="lastName"
+                  control={control}
+                  render={({ field }) => (
+                    <FormControl>
+                      <FormLabel>Last Name</FormLabel>
+                      <Input {...field} />
+                    </FormControl>
+                  )}
+                />
+                <Controller
+                  name="email"
+                  control={control}
+                  render={({ field }) => (
+                    <FormControl>
+                      <FormLabel>Email</FormLabel>
+                      <Input {...field} />
+                    </FormControl>
+                  )}
+                />
+                <Controller
+                  name="message"
+                  control={control}
+                  render={({ field }) => (
+                    <FormControl>
+                      <FormLabel>Message</FormLabel>
+                      <Textarea {...field} />
+                    </FormControl>
+                  )}
+                />
+                <Button type="submit" variant={'outline'} w={'full'}>
+                  Submit
+                </Button>
+              </Stack>
             </form>
           </>
         </h1>
