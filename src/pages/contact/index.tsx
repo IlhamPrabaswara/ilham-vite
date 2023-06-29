@@ -67,7 +67,7 @@ const Contact = () => {
                     <>
                       <FormControl>
                         <FormLabel>First Name</FormLabel>
-                        <Input placeholder="First Name" {...field} />
+                        <Input placeholder="Your first name (required)" {...field} />
                       </FormControl>
                     </>
                   )}
@@ -78,7 +78,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormControl>
                       <FormLabel>Last Name</FormLabel>
-                      <Input {...field} />
+                      <Input placeholder="Your last name (required)" {...field} />
                     </FormControl>
                   )}
                 />
@@ -88,7 +88,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormControl>
                       <FormLabel>Email</FormLabel>
-                      <Input {...field} />
+                      <Input placeholder="Your email (required)" {...field} />
                     </FormControl>
                   )}
                 />
@@ -98,7 +98,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormControl>
                       <FormLabel>Message</FormLabel>
-                      <Textarea {...field} />
+                      <Textarea placeholder='Message' {...field} />
                     </FormControl>
                   )}
                 />
