@@ -8,9 +8,9 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { supabase } from '../../supabaseClient'
+import { supabase } from '../../utils/supabaseClient'
 import PageContainer from '../../layouts/pageContainer'
-import { dataBlog } from '../../services/interfaces/dataBlog.interfaces'
+import { dataBlog } from '../../interfaces/dataBlog.interfaces'
 
 const Home = () => {
   const [dataBlog, setDataBlog] = useState<dataBlog[]>()
