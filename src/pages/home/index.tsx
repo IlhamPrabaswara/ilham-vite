@@ -19,7 +19,7 @@ const Home = () => {
     getBlog()
   }, [])
   const getBlog = async () => {
-    let { data }: any = await supabase.from('blog-posts').select()
+    const { data }: any = await supabase.from('blog-posts').select()
     setDataBlog(data)
   }
   return (

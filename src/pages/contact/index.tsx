@@ -57,7 +57,7 @@ const Contact = () => {
         <h1>
           <>
             <Text mb={'50px'}>
-              Got a project you'd like to discuss? I'm all ears.
+              Got a project you`&apos;`d like to discuss? I`&apos;`m all ears.
             </Text>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Stack gap={'30px'}>
@@ -69,7 +69,10 @@ const Contact = () => {
                     <>
                       <FormControl>
                         <FormLabel>First Name</FormLabel>
-                        <Input placeholder="Your first name (required)" {...field} />
+                        <Input
+                          placeholder="Your first name (required)"
+                          {...field}
+                        />
                       </FormControl>
                     </>
                   )}
@@ -80,7 +83,10 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormControl>
                       <FormLabel>Last Name</FormLabel>
-                      <Input placeholder="Your last name (required)" {...field} />
+                      <Input
+                        placeholder="Your last name (required)"
+                        {...field}
+                      />
                     </FormControl>
                   )}
                 />
@@ -100,7 +106,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormControl>
                       <FormLabel>Message</FormLabel>
-                      <Textarea placeholder='Message' {...field} />
+                      <Textarea placeholder="Message" {...field} />
                     </FormControl>
                   )}
                 />

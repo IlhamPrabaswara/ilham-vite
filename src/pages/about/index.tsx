@@ -1,13 +1,13 @@
-import { Heading, Stack, Text } from "@chakra-ui/react";
-import PageContainer from "../../layouts/pageContainer";
+import { Heading, Stack, Text } from '@chakra-ui/react'
+import PageContainer from '../../layouts/pageContainer'
 
 const About = () => {
   return (
     <PageContainer>
-      <Heading fontSize={24} mb={"15px"}>
+      <Heading fontSize={24} mb={'15px'}>
         Lorem
       </Heading>
-      <Stack fontSize={14} gap={"10px"}>
+      <Stack fontSize={14} gap={'10px'}>
         <Text>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nam at
           odio esse consequatur quo dicta molestias, hic magnam nisi. Beatae
@@ -28,6 +28,6 @@ const About = () => {
         </Text>
       </Stack>
     </PageContainer>
-  );
-};
-export default About;
+  )
+}
+export default About

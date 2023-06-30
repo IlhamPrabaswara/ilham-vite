@@ -33,7 +33,7 @@ const NavBar: FC = () => {
           bg={'rgba(255, 255, 255, 0.9)'}
           backdropFilter={'blur(20px)'}
           _after={{
-            content: `""`,
+            content: '',
             backgroundColor: 'rgba(0,0,0,0.16)',
             display: 'block',
             height: '1px',
@@ -53,7 +53,7 @@ const NavBar: FC = () => {
           top={0}
           zIndex={2}
         >
-          <Link to={`/`}>Ilham</Link>
+          <Link to={'/'}>Ilham</Link>
           <button aria-label="Open navigation" onClick={onToggle}>
             <svg
               width="24"
@@ -87,9 +87,9 @@ const NavBar: FC = () => {
               spacing={15}
               zIndex={9999}
             >
-              <Link to={`/about`}>About</Link>
-              <Link to={`/blog`}>Blog</Link>
-              <Link to={`/contact`}>Contact</Link>
+              <Link to={'/about'}>About</Link>
+              <Link to={'/blog'}>Blog</Link>
+              <Link to={'/contact'}>Contact</Link>
             </Stack>
           </Box>
         </Flex>
