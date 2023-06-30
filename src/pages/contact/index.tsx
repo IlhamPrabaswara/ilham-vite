@@ -36,6 +36,8 @@ const Contact = () => {
     if (data) {
       alert(`Hi ${data[0].firstName}! your message is successfully sent!`)
     }
+    // Try catch
+    // Absolute import untuk vite
   }
 
   useEffect(() => {
