@@ -1,5 +1,5 @@
 export interface dataBlog {
-  ID: number;
+  id: number;
   postCategory: string;
   postTitle: string;
   postDate: string;

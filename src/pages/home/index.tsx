@@ -52,7 +52,7 @@ const Home = () => {
         <Grid gap={10}>
           {dataBlog?.map((item) => (
             <Card
-              key={item.ID}
+              key={item.id}
               overflow={'hidden'}
               variant={'filled'}
               bgColor={'white'}
