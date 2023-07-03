@@ -33,7 +33,7 @@ const NavBar: FC = () => {
           bg={'rgba(255, 255, 255, 0.9)'}
           backdropFilter={'blur(20px)'}
           _after={{
-            content: '',
+            content: '""',
             backgroundColor: 'rgba(0,0,0,0.16)',
             display: 'block',
             height: '1px',
