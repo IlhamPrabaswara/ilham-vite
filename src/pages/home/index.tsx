@@ -1,16 +1,9 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  Grid,
-  Heading,
-  Image,
-  Text,
-} from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { supabase } from '../../utils/supabaseClient'
-import PageContainer from '../../layouts/pageContainer'
-import { dataBlog } from '../../interfaces/dataBlog.interfaces'
+import { Box, Grid, Heading, Image, Text } from '@chakra-ui/react'
+import { supabase } from '@/utils/supabaseClient'
+import { dataBlog } from '@/interfaces/dataBlog.interfaces'
+import BlogCard from '@/components/cards/blogCard'
+import PageContainer from '@/layouts/pageContainer'
 
 const Home = () => {
   const [dataBlog, setDataBlog] = useState<dataBlog[]>()
@@ -51,24 +44,12 @@ const Home = () => {
         </Text>
         <Grid gap={10}>
           {dataBlog?.map((item) => (
-            <Card
-              key={item.id}
-              overflow={'hidden'}
-              variant={'filled'}
-              bgColor={'white'}
-              borderRadius={12}
-            >
-              {/* <Image maxH={"170px"} src={item.imgSrc} /> */}
-              <CardBody p={6}>
-                <Heading fontSize={12} textTransform={'uppercase'}>
-                  {item.postCategory}
-                </Heading>
-                <Heading mt={1} fontSize={19}>
-                  {item.postTitle}
-                </Heading>
-                <Text mt={2}>{item.postDate}</Text>
-              </CardBody>
-            </Card>
+            <BlogCard
+              id={item.id}
+              postCategory={item.postCategory}
+              postTitle={item.postTitle}
+              postDate={item.postDate}
+            />
           ))}
         </Grid>
       </PageContainer>
