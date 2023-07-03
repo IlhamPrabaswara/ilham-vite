@@ -14,7 +14,7 @@ import { ContactFormType } from '../../interfaces/contact.interfaces'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 
 const Contact = () => {
-  const { control, handleSubmit, reset, formState } = useForm({
+  const { control, handleSubmit, reset, formState } = useForm<ContactFormType>({
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -24,7 +24,7 @@ const Contact = () => {
   })
 
   const onSubmit: SubmitHandler<ContactFormType> = async (dataMessage) => {
-    const { data }: any = await supabase
+    const res = await supabase
       .from('messages')
       .insert({
         firstName: dataMessage.firstName,
@@ -33,6 +33,7 @@ const Contact = () => {
         message: dataMessage.message,
       })
       .select()
+    const data = res.data as ContactFormType[]
     if (data) {
       alert(`Hi ${data[0].firstName}! your message is successfully sent!`)
     }

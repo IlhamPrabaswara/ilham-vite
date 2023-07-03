@@ -12,7 +12,8 @@ const Home = () => {
     getBlog()
   }, [])
   const getBlog = async () => {
-    const { data }: any = await supabase.from('blog-posts').select()
+    const res = await supabase.from('blog-posts').select()
+    const data = res.data as dataBlog[]
     setDataBlog(data)
   }
   return (
@@ -45,6 +46,7 @@ const Home = () => {
         <Grid gap={10}>
           {dataBlog?.map((item) => (
             <BlogCard
+              key={item.id}
               id={item.id}
               postCategory={item.postCategory}
               postTitle={item.postTitle}
