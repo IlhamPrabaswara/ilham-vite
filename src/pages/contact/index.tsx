@@ -11,10 +11,10 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 import { supabase } from '../../utils/supabaseClient'
-import { ContactFormType } from '../../interfaces/contact.interfaces'
+import { ContactFormInterface } from '../../interfaces/contact.interfaces'
 
 const Contact = () => {
-  const { control, handleSubmit, reset, formState } = useForm<ContactFormType>({
+  const { control, handleSubmit, reset, formState } = useForm<ContactFormInterface>({
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -22,7 +22,7 @@ const Contact = () => {
       message: '',
     },
   })
-  const onSubmit: SubmitHandler<ContactFormType> = async (dataMessage) => {
+  const onSubmit: SubmitHandler<ContactFormInterface> = async (dataMessage) => {
     const { data }: any = await supabase
       .from('messages')
       .insert({

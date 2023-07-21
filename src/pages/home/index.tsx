@@ -10,10 +10,10 @@ import {
 import MainLayout from '../../layout'
 import { supabase } from '../../utils/supabaseClient'
 import { useEffect, useState } from 'react'
-import { BlogDataType } from '../../interfaces/blog.interfaces'
+import { BlogDataInterface } from '../../interfaces/blog.interfaces'
 
 const Home = () => {
-  const [dataBlog, setDataBlog] = useState<BlogDataType[]>()
+  const [dataBlog, setDataBlog] = useState<BlogDataInterface[]>()
 
   useEffect(() => {
     getBlog()
