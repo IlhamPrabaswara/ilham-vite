@@ -11,17 +11,19 @@ import MainLayout from '../../layout'
 import { supabase } from '../../utils/supabaseClient'
 import { useEffect, useState } from 'react'
 import { BlogDataInterface } from '../../interfaces/blog.interfaces'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const [dataBlog, setDataBlog] = useState<BlogDataInterface[]>()
-
-  useEffect(() => {
-    getBlog()
-  }, [])
   const getBlog = async () => {
     const { data }: any = await supabase.from('blog-posts').select()
     setDataBlog(data)
   }
+
+  useEffect(() => {
+    getBlog()
+  }, [])
+
   return (
     <MainLayout>
       <Box mb={50}>
@@ -30,7 +32,7 @@ const Home = () => {
           borderRadius={10}
           height={'215px'}
           objectFit={'cover'}
-          src="./landing-image.png"
+          src="/img/landing-image.png"
           w={'full'}
         />
         <Heading mt={2.5} fontSize={'21px'} lineHeight={'25px'}>
@@ -53,14 +55,16 @@ const Home = () => {
             bgColor={'white'}
             borderRadius={12}
           >
-            {/* <Image maxH={"170px"} src={item.imgSrc} /> */}
+            <Image src={item.imgUrl} />
             <CardBody p={6}>
               <Heading fontSize={12} textTransform={'uppercase'}>
                 {item.postCategory}
               </Heading>
-              <Heading mt={1} fontSize={19}>
-                {item.postTitle}
-              </Heading>
+              <Link to={`./blog/${item.slug}`}>
+                <Heading mt={1} fontSize={19}>
+                  {item.postTitle}
+                </Heading>
+              </Link>
               <Text mt={2}>{item.postDate}</Text>
             </CardBody>
           </Card>
