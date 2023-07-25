@@ -7,7 +7,9 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <Box backgroundColor={'neutral.95'} padding={4}>{children}</Box>
+      <Box backgroundColor={'neutral.95'} fontFamily={'Inter'} px={4} py={5}>
+        {children}
+      </Box>
     </>
   )
 }
