@@ -35,7 +35,12 @@ const Home = () => {
           src="/img/landing-image.png"
           w={'full'}
         />
-        <Heading mt={2.5} fontSize={'21px'} lineHeight={'25px'}>
+        <Heading
+          fontFamily={'Inter'}
+          fontSize={'21px'}
+          lineHeight={'25px'}
+          mt={2.5}
+        >
           Hi! I’m Ilham — Full time nerd.
         </Heading>
         <Text fontSize={'17px'} lineHeight={'25px'}>
@@ -55,13 +60,18 @@ const Home = () => {
             bgColor={'white'}
             borderRadius={12}
           >
-            <Image src={item.imgUrl} />
+            <Image fit={'cover'} src={item.imgUrl} />
             <CardBody p={6}>
-              <Heading fontSize={12} textTransform={'uppercase'}>
+              <Heading
+                color={'secondary.60'}
+                fontFamily={'Inter'}
+                fontSize={12}
+                textTransform={'uppercase'}
+              >
                 {item.postCategory}
               </Heading>
               <Link to={`./blog/${item.slug}`}>
-                <Heading mt={1} fontSize={19}>
+                <Heading fontFamily={'Inter'} fontSize={19} mt={1}>
                   {item.postTitle}
                 </Heading>
               </Link>
