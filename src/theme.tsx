@@ -5,10 +5,12 @@ const theme = extendTheme({
     neutral: {
       95: '#F2F0F4',
     },
+    secondary: {
+      60: '#8C90A6',
+    },
   },
   fonts: {
-    heading: '\'Inter\', sans-serif',
-    body: '\'Inter\', sans-serif',
+    Inter: '\'Inter\', sans-serif',
   },
 })
 
