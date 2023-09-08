@@ -6,10 +6,16 @@ export default function MainLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <Box backgroundColor={'neutral.95'} fontFamily={'Inter'} px={4} py={5}>
+    <Box backgroundColor={'neutral.95'}>
+      <Box
+        width={{ base: '100%', xl: '980px' }}
+        fontFamily={'Inter'}
+        px={{ base: 4, xl: 0 }}
+        py={{ base: 5 }}
+        margin={'auto'}
+      >
         {children}
       </Box>
-    </>
+    </Box>
   )
 }
