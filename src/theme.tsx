@@ -11,6 +11,7 @@ const theme = extendTheme({
   },
   fonts: {
     Inter: '\'Inter\', sans-serif',
+    Raleway: '\'Raleway\', sans-serif',
   },
 })
 
